@@ -35,5 +35,6 @@ int main()
     //       (decide which, and why) should sem_unlink/shm_unlink so
     //       the OS doesn't leak these persistent objects across runs
     munmap(mySharedData, sizeof(MyConfig::SharedData));
+    sem_close(mySem);
     close(fd);
 }

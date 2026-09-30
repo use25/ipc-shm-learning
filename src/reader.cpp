@@ -26,6 +26,8 @@ int main()
 
     // TODO: munmap, close (no unlink here - see writer's note above)
     munmap(mySharedDataFromWriter, sizeof(MyConfig::SharedData));
+    shm_unlink(MyConfig::SHM_NAME);
     sem_close(mySemData);
+    sem_unlink(MyConfig::SEM_NAME);
     close(fd);
 }
